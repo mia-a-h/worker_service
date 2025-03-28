@@ -1,0 +1,23 @@
+﻿# Ignore config files that contain sensitive information
+appsettings.json
+appsettings.Development.json
+appsettings.*.json
+
+# Ignore build output directories
+bin/
+obj/
+
+# Ignore user secrets (for .NET development)
+secrets/
+
+# Ignore local environment files (like Docker, local configurations)
+.env
+
+# Ignore visual studio specific files
+.vs/
+.vscode/
+.idea/
+
+# Ignore system files
+Thumbs.db
+Desktop.ini
