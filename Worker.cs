@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+
 namespace worker_service
 {
     public class Worker : BackgroundService
@@ -52,7 +54,10 @@ namespace worker_service
 
                     foreach (var coin in coins)
                     {
-                        var existingCoin = await dbContext.Coins.FindAsync(coin.Id);
+                        // Insert new record
+                        dbContext.CoinPrices.Add(coin);
+                        /*
+                        var existingCoin = await dbContext.Coins.FirstOrDefaultAsync(c => c.CoinId == coin.CoinId);
                         if (existingCoin != null)
                         {
                             // Update existing record
@@ -63,14 +68,15 @@ namespace worker_service
                             existingCoin.PriceInUsd = coin.PriceInUsd;
                             existingCoin.PriceInEuro = coin.PriceInEuro;
                             existingCoin.PriceInAed = coin.PriceInAed;
+                            existingCoin.LastUpdated = coin.LastUpdated;
 
                             dbContext.Coins.Update(existingCoin);
                         }
                         else
                         {
-                            // Insert new record
                             dbContext.Coins.Add(coin);
-                        }
+
+                        }*/
                     }
 
                     await dbContext.SaveChangesAsync();

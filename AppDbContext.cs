@@ -9,12 +9,10 @@ namespace worker_service
 {
     public class AppDbContext: DbContext
     {
+        public DbSet<CoinPrices> CoinPrices { get; set; }
         public DbSet<Coin> Coins { get; set; }
 
-        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
-        {
-
-        }
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options){}
 
         // Override OnModelCreating if you need to configure the model further
         protected override void OnModelCreating(ModelBuilder modelBuilder)
